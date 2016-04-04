@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>687</width>
+    <height>562</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>LED Tool</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QStackedWidget" name="main_stacked_widget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="main_page">
+       <property name="minimumSize">
+        <size>
+         <width>669</width>
+         <height>544</height>
+        </size>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1">
+        <property name="spacing">
+         <number>6</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="led_filter">
+            <property name="placeholderText">
+             <string>Filter</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QListView" name="led_list_view">
+            <property name="iconSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="gridSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QToolButton" name="add_led_button">
+              <property name="minimumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>+</string>
+              </property>
+              <property name="autoRaise">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QToolButton" name="remove_led_button">
+              <property name="minimumSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>−</string>
+              </property>
+              <property name="autoRaise">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,1">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <property name="leftMargin">
+           <number>14</number>
+          </property>
+          <item row="6" column="1">
+           <widget class="QLabel" name="voltage_label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>--- V</string>
+            </property>
+            <property name="buddy">
+             <cstring>voltage_label</cstring>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Current:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDoubleSpinBox" name="current_spinbox">
+            <property name="suffix">
+             <string> mA</string>
+            </property>
+            <property name="maximum">
+             <double>9999999.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Input Power:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Radiant Efficiency:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QLabel" name="input_power_label">
+            <property name="text">
+             <string>--- W</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <widget class="QComboBox" name="voltage_group_combobox">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Thermal Power:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <widget class="QLabel" name="thermal_power_label">
+            <property name="text">
+             <string>--- W</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Luminous Flux:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Voltage Group:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QLabel" name="radiant_flux_label">
+            <property name="text">
+             <string>--- W</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QLabel" name="led_header_label">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>32</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;LUMILEDS LUXEON F ES&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="edit_led_button">
+              <property name="maximumSize">
+               <size>
+                <width>75</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Edit</string>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Temperature:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QLabel" name="luminous_flux_label">
+            <property name="text">
+             <string>--- lm</string>
+            </property>
+            <property name="textInteractionFlags">
+             <set>Qt::LinksAccessibleByMouse</set>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="0">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="4" column="1">
+           <widget class="QComboBox" name="brightness_group_combobox"/>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_7">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Radiant Flux:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Brightness Group:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QDoubleSpinBox" name="temperature_spinbox">
+            <property name="suffix">
+             <string> °C</string>
+            </property>
+            <property name="maximum">
+             <double>9999999.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Voltage:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="1">
+           <widget class="QLabel" name="radiant_efficiency_label">
+            <property name="text">
+             <string>--- %</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="editor_page">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="0,2">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <property name="sizeConstraint">
+           <enum>QLayout::SetMinimumSize</enum>
+          </property>
+          <item>
+           <widget class="QListWidget" name="led_editor_navigator_list">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>Parameter</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Brightness Groups</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Voltage Groups</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Current vs. Emission</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Current vs. Voltage</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Temperature vs. Emission</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Temperature vs. Voltage</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QStackedWidget" name="editor_stacked_widget">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="parameter_page">
+             <layout class="QGridLayout" name="gridLayout_3">
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <property name="verticalSpacing">
+               <number>6</number>
+              </property>
+              <item row="1" column="2">
+               <widget class="QComboBox" name="manufacturer_combo">
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>OSRAM</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="7" column="0">
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLabel" name="label_20">
+                <property name="text">
+                 <string>Typical Voltage:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLabel" name="label_18">
+                <property name="text">
+                 <string>Manufacturer:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_19">
+                <property name="text">
+                 <string>Family:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QLabel" name="label_21">
+                <property name="text">
+                 <string>Typical Current:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QLineEdit" name="name_edit">
+                <property name="text">
+                 <string>LA T67F</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QLabel" name="label_22">
+                <property name="text">
+                 <string>Thermal Resistance:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="0">
+               <widget class="QLabel" name="label_23">
+                <property name="text">
+                 <string>Reference Temperature:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QDoubleSpinBox" name="thermal_resistance_spin">
+                <property name="suffix">
+                 <string> K/W</string>
+                </property>
+                <property name="maximum">
+                 <double>9999999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_17">
+                <property name="text">
+                 <string>Name:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="6" column="2">
+               <widget class="QDoubleSpinBox" name="reference_temperature_spin">
+                <property name="suffix">
+                 <string> °C</string>
+                </property>
+                <property name="maximum">
+                 <double>9999999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="2">
+               <widget class="QDoubleSpinBox" name="typical_current_spin">
+                <property name="suffix">
+                 <string> mA</string>
+                </property>
+                <property name="maximum">
+                 <double>9999999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QDoubleSpinBox" name="typical_voltage_spin">
+                <property name="suffix">
+                 <string> V</string>
+                </property>
+                <property name="maximum">
+                 <double>9999999.000000000000000</double>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QComboBox" name="family_combo">
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>TOPLED</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="brightness_group_page">
+             <layout class="QVBoxLayout" name="verticalLayout">
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableView" name="brightness_group_table_view">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="voltage_group_page">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableView" name="voltage_group_table_view">
+                <attribute name="verticalHeaderCascadingSectionResizes">
+                 <bool>true</bool>
+                </attribute>
+                <attribute name="verticalHeaderDefaultSectionSize">
+                 <number>0</number>
+                </attribute>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="current_emission_page">
+             <layout class="QVBoxLayout" name="verticalLayout_5">
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableView" name="current_emission_table_view"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="current_voltage_page">
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableView" name="current_voltage_table_view"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="temperature_emission_page">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableView" name="temperature_emission_table_view"/>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="temperature_voltage_page">
+             <layout class="QHBoxLayout" name="horizontalLayout_8">
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QTableView" name="temperature_voltage_table_view"/>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QDialogButtonBox" name="buttonBox">
+          <property name="standardButtons">
+           <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>name_edit</tabstop>
+  <tabstop>manufacturer_combo</tabstop>
+  <tabstop>family_combo</tabstop>
+  <tabstop>typical_voltage_spin</tabstop>
+  <tabstop>typical_current_spin</tabstop>
+  <tabstop>thermal_resistance_spin</tabstop>
+  <tabstop>reference_temperature_spin</tabstop>
+  <tabstop>buttonBox</tabstop>
+  <tabstop>led_editor_navigator_list</tabstop>
+  <tabstop>brightness_group_combobox</tabstop>
+  <tabstop>voltage_group_combobox</tabstop>
+  <tabstop>edit_led_button</tabstop>
+  <tabstop>led_filter</tabstop>
+  <tabstop>led_list_view</tabstop>
+  <tabstop>add_led_button</tabstop>
+  <tabstop>remove_led_button</tabstop>
+  <tabstop>temperature_spinbox</tabstop>
+  <tabstop>current_spinbox</tabstop>
+  <tabstop>brightness_group_table_view</tabstop>
+  <tabstop>voltage_group_table_view</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>led_editor_navigator_list</sender>
+   <signal>currentRowChanged(int)</signal>
+   <receiver>editor_stacked_widget</receiver>
+   <slot>setCurrentIndex(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>141</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>296</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
