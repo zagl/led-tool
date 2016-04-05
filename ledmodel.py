@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import os
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+import sqlite3
 
 class LedModel(QAbstractTableModel):
 
@@ -10,10 +12,43 @@ class LedModel(QAbstractTableModel):
     def __init__(self, parent=None):
         super(LedModel, self).__init__(parent)
 
-        self.rows = 5
-        self.cols = 2
+        filename = "led-tool.db"
+        new = not os.path.exists(filename)
+        self.conn = sqlite3.connect(filename)
+        self.c = self.conn.cursor()
 
-        self.m_gridData = [[i*j for i in range(self.cols) ] for j in range(self.rows)]
+        self.rows = 0
+        self.cols = 8
+
+        self.columns = [
+                "id",
+                "name",
+                "family",
+                "manufacturer",
+                "thermal_resistance_jb",
+                "reference_temperature",
+                "typical_voltage",
+                "typical_current"
+        ]
+
+        query = """
+            SELECT
+                leds.id,
+                leds.name,
+                leds.family,
+                leds.manufacturer,
+                leds.thermal_resistance_jb,
+                leds.reference_temperature,
+                leds.typical_voltage,
+                leds.typical_current
+            FROM leds;
+        """
+
+        self.m_gridData = []
+
+        for row in self.c.execute(query):
+            self.m_gridData.append(list(row))
+            self.rows += 1
 
     def rowCount(self, index):
         return self.rows
@@ -22,22 +57,25 @@ class LedModel(QAbstractTableModel):
         return self.cols
 
     def data(self, index, role):
-        if role == Qt.DisplayRole:
+        if role == Qt.DisplayRole or role == Qt.EditRole:
             return self.m_gridData[index.row()][index.column()]
 
     def flags(self, index):
         return Qt.ItemIsSelectable | Qt.ItemIsEditable | Qt.ItemIsEnabled
 
     def setData(self, index, value, role):
+        row = index.row()
+        col = index.column()
         if role == Qt.EditRole:
-            # save value from editor to member m_gridData
-            self.m_gridData[index.row()][index.column()] = str(value)
-            # for presentation purposes only: build and emit a joined string
-            result = ''
-            for row in range(self.rows):
-                for col in range(self.cols):
-                    result += self.m_gridData[row][col] + ' '
-            self.editCompleted.emit(result)
+            if col == 0 or col == 2 or col == 3:
+                self.m_gridData[row][col] = int(value)
+            elif col == 4 or col == 5 or col == 6 or col == 7:
+                self.m_gridData[row][col] = float(value)
+            elif col == 1:
+                self.m_gridData[row][col] = str(value)
+            self.c.execute("UPDATE leds SET {}=? WHERE id=?".format(self.columns[col]),
+                (value, self.m_gridData[row][0] ))
+            self.conn.commit()
         return True
 
     def headerData(self, section, orientation, role):
